@@ -2,10 +2,7 @@ package com.sereneoasis.mobs;
 
 import com.sereneoasis.mobs.goals.ZombieAttackGoal;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.goal.*;
@@ -17,14 +14,21 @@ import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SereneMonster {
 
@@ -55,7 +59,15 @@ public class SereneMonster {
         mob.craftAttributes.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(0);
         mob.craftAttributes.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(0);
         mob.craftAttributes.getAttribute(Attribute.GENERIC_ATTACK_KNOCKBACK).setBaseValue(0);
+
+        ArrayList<Entity.DefaultDrop> drops = new ArrayList<>();
+        addDefaultDrop(drops, Material.ICE);
+        mob.drops = drops;
         registerZombieGoals();
+    }
+
+    private void addDefaultDrop(ArrayList<Entity.DefaultDrop> drops, Material material){
+        drops.add(new Entity.DefaultDrop(ItemStack.fromBukkitCopy(new org.bukkit.inventory.ItemStack(material)), null));
     }
 
 
