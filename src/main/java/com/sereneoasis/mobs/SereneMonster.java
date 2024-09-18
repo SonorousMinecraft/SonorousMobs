@@ -1,9 +1,13 @@
 package com.sereneoasis.mobs;
 
+import com.sereneoasis.mobs.goals.ZombieAttackGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -12,11 +16,15 @@ import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+
+import java.util.Arrays;
 
 public class SereneMonster {
 
@@ -31,8 +39,25 @@ public class SereneMonster {
 
         this.goalSelector = mob.goalSelector;
         this.targetSelector = mob.targetSelector;
-        registerCreeperGoals();
+        Arrays.stream(Attribute.values()).forEach(attribute -> {
+            if (mob.craftAttributes.getAttribute(attribute) == null){
+                mob.craftAttributes.registerAttribute(attribute);
+            }
+        });
+
+
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+//        mob.craftAttributes.getAttribute(Attribute.GENERIC_MAX_ABSORPTION).setBaseValue();
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(100);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(0);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.7);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(2);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(0);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(0);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_ATTACK_KNOCKBACK).setBaseValue(0);
+        registerZombieGoals();
     }
+
 
     public void registerCreeperGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(mob));
@@ -79,7 +104,7 @@ public class SereneMonster {
 
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(mob, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(mob));
-//        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
+        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
 //        this.goalSelector.addGoal(6, new MoveThroughVillageGoal(mob, 1.0, true, 4, this::canBreakDoors));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(mob, 1.0));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(mob, new Class[0])).setAlertOthers(new Class[]{ZombifiedPiglin.class}));
