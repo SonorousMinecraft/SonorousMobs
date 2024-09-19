@@ -6,4 +6,5 @@ com/sereneoasis/SereneMobs.class
 com/sereneoasis/command/SerenityCommand.class
 com/sereneoasis/mobs/goals/EnderManGoals$EndermanFreezeWhenLookedAt.class
 com/sereneoasis/mobs/goals/ZombieAttackGoal.class
+com/sereneoasis/mobs/SereneMob.class
 com/sereneoasis/mobs/goals/EnderManGoals$EndermanLookForPlayerGoal.class

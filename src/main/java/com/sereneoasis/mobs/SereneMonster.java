@@ -1,46 +1,86 @@
 package com.sereneoasis.mobs;
 
 import com.sereneoasis.mobs.goals.ZombieAttackGoal;
-import net.minecraft.core.BlockPos;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.agent.ByteBuddyAgent;
+import net.bytebuddy.dynamic.DynamicType;
+import net.bytebuddy.implementation.FixedValue;
+import net.bytebuddy.implementation.Implementation;
+import net.bytebuddy.implementation.MethodDelegation;
+import net.bytebuddy.matcher.ElementMatchers;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.monster.*;
-import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class SereneMonster {
+import static net.bytebuddy.matcher.ElementMatchers.*;
+
+
+public class SereneMonster<T extends Entity> {
 
     private PathfinderMob mob;
     private GoalSelector goalSelector;
     private GoalSelector targetSelector;
 
-    public SereneMonster(EntityType<? extends PathfinderMob> type , Location location) {
-        Level world = ((CraftWorld) location.getWorld()).getHandle();
-        BlockPos pos = BlockPos.containing(new Vec3(location.toVector().toVector3f()));
-        this.mob = type.spawn(world.getMinecraftWorld(), pos, MobSpawnType.NATURAL);
 
+
+
+    public SereneMonster(EntityType<T> type , Location location) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Level world = ((CraftWorld) location.getWorld()).getHandle();
+//        BlockPos pos = BlockPos.containing(new Vec3(location.toVector().toVector3f()));
+        Class<? extends LivingEntity> entityClass = (Class<? extends LivingEntity>) type.create(world).getClass();
+//        this.mob = (PathfinderMob) entityClass.getDeclaredConstructor(EntityType.class, Level.class ).newInstance(type, world)
+//        Arrays.stream(entityClass.getMethods()).forEach(method -> System.out.println(method.getName()));
+        DynamicType.Unloaded<? extends LivingEntity> unloadedType = new ByteBuddy()
+                .subclass(entityClass)
+                .method(ElementMatchers.named("l"))
+                .intercept(MethodDelegation.to(SereneMob.class))
+                .make();
+
+        this.mob = (PathfinderMob) unloadedType.load(getClass()
+                        .getClassLoader())
+                .getLoaded().getDeclaredConstructor(EntityType.class, Level.class).newInstance(type, world);
+
+        mob.tick();
+
+
+
+//        enhancer.setCallback(new MethodInterceptor() {
+//            @Override
+//            public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+//                if (method.getName().equals("tick")) {
+//                    return null;
+//                } else {
+//                    method.setAccessible(true);
+//                    return proxy.invokeSuper(obj, args);
+//                }
+//            }
+//        });
+
+
+//        Constructor<?> constructor = entityClass.getDeclaredConstructor(EntityType.class, Level.class);
+//        this.mob = (PathfinderMob) enhancer.create(constructor.getParameterTypes(), new Object[]{type, world});
+        world.addFreshEntity(mob);
+
+//        this.mob = type.spawn(world.getMinecraftWorld(), pos, MobSpawnType.NATURAL);
+        this.mob.moveTo(new Vec3(location.toVector().toVector3f()));
         this.goalSelector = mob.goalSelector;
         this.targetSelector = mob.targetSelector;
         Arrays.stream(Attribute.values()).forEach(attribute -> {
@@ -63,6 +103,7 @@ public class SereneMonster {
         ArrayList<Entity.DefaultDrop> drops = new ArrayList<>();
         addDefaultDrop(drops, Material.ICE);
         mob.drops = drops;
+
         registerZombieGoals();
     }
 
