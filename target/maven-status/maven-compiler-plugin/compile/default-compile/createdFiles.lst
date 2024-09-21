@@ -1,10 +1,6 @@
+com/sereneoasis/mobs/goals/BlazeAttackGoal.class
 com/sereneoasis/mobs/SereneMonster.class
-com/sereneoasis/mobs/goals/EnderManGoals$EndermanTakeBlockGoal.class
-com/sereneoasis/mobs/goals/EnderManGoals$EndermanLeaveBlockGoal.class
-com/sereneoasis/mobs/goals/EnderManGoals.class
 com/sereneoasis/SereneMobs.class
 com/sereneoasis/command/SerenityCommand.class
-com/sereneoasis/mobs/goals/EnderManGoals$EndermanFreezeWhenLookedAt.class
 com/sereneoasis/mobs/goals/ZombieAttackGoal.class
 com/sereneoasis/mobs/SereneMob.class
-com/sereneoasis/mobs/goals/EnderManGoals$EndermanLookForPlayerGoal.class

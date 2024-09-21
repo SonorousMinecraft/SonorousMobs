@@ -1,5 +1,6 @@
 package com.sereneoasis.mobs;
 
+import com.sereneoasis.mobs.goals.BlazeAttackGoal;
 import com.sereneoasis.mobs.goals.ZombieAttackGoal;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
@@ -36,6 +37,11 @@ import static net.bytebuddy.matcher.ElementMatchers.*;
 public class SereneMonster<T extends Entity> {
 
     private PathfinderMob mob;
+
+    public PathfinderMob getMob() {
+        return mob;
+    }
+
     private GoalSelector goalSelector;
     private GoalSelector targetSelector;
 
@@ -45,10 +51,10 @@ public class SereneMonster<T extends Entity> {
     public SereneMonster(EntityType<T> type , Location location) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Level world = ((CraftWorld) location.getWorld()).getHandle();
 //        BlockPos pos = BlockPos.containing(new Vec3(location.toVector().toVector3f()));
-        Class<? extends LivingEntity> entityClass = (Class<? extends LivingEntity>) type.create(world).getClass();
+        Class<? extends PathfinderMob> entityClass = (Class<? extends PathfinderMob>) type.create(world).getClass();
 //        this.mob = (PathfinderMob) entityClass.getDeclaredConstructor(EntityType.class, Level.class ).newInstance(type, world)
 //        Arrays.stream(entityClass.getMethods()).forEach(method -> System.out.println(method.getName()));
-        DynamicType.Unloaded<? extends LivingEntity> unloadedType = new ByteBuddy()
+        DynamicType.Unloaded<? extends PathfinderMob> unloadedType = new ByteBuddy()
                 .subclass(entityClass)
                 .method(ElementMatchers.named("l"))
                 .intercept(MethodDelegation.to(SereneMob.class))
@@ -57,8 +63,7 @@ public class SereneMonster<T extends Entity> {
         this.mob = (PathfinderMob) unloadedType.load(getClass()
                         .getClassLoader())
                 .getLoaded().getDeclaredConstructor(EntityType.class, Level.class).newInstance(type, world);
-
-        mob.tick();
+        SereneMob.ENTITIES.add(mob);
 
 
 
@@ -94,7 +99,7 @@ public class SereneMonster<T extends Entity> {
 //        mob.craftAttributes.getAttribute(Attribute.GENERIC_MAX_ABSORPTION).setBaseValue();
         mob.craftAttributes.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(100);
         mob.craftAttributes.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(0);
-        mob.craftAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.7);
+        mob.craftAttributes.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.3);
         mob.craftAttributes.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(2);
         mob.craftAttributes.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(0);
         mob.craftAttributes.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(0);
@@ -157,7 +162,8 @@ public class SereneMonster<T extends Entity> {
 
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(mob, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(mob));
-        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
+//        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
+        this.goalSelector.addGoal(2, new BlazeAttackGoal(mob));
 //        this.goalSelector.addGoal(6, new MoveThroughVillageGoal(mob, 1.0, true, 4, this::canBreakDoors));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(mob, 1.0));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(mob, new Class[0])).setAlertOthers(new Class[]{ZombifiedPiglin.class}));
