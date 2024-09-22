@@ -1,5 +1,7 @@
 package com.sereneoasis.mobs;
 
+import com.sereneoasis.ability.Archetype;
+import com.sereneoasis.ability.SereneEntity;
 import com.sereneoasis.mobs.goals.BlazeAttackGoal;
 import com.sereneoasis.mobs.goals.ZombieAttackGoal;
 import net.bytebuddy.ByteBuddy;
@@ -84,9 +86,12 @@ public class SereneMonster<T extends Entity> {
 //        this.mob = (PathfinderMob) enhancer.create(constructor.getParameterTypes(), new Object[]{type, world});
         world.addFreshEntity(mob);
 
+        new SereneEntity(mob.getBukkitEntity(), Archetype.SKY);
+
 //        this.mob = type.spawn(world.getMinecraftWorld(), pos, MobSpawnType.NATURAL);
         this.mob.moveTo(new Vec3(location.toVector().toVector3f()));
         this.goalSelector = mob.goalSelector;
+
         this.targetSelector = mob.targetSelector;
         Arrays.stream(Attribute.values()).forEach(attribute -> {
             if (mob.craftAttributes.getAttribute(attribute) == null){
@@ -109,7 +114,7 @@ public class SereneMonster<T extends Entity> {
         addDefaultDrop(drops, Material.ICE);
         mob.drops = drops;
 
-        registerZombieGoals();
+        registerCreeperGoals();
     }
 
     private void addDefaultDrop(ArrayList<Entity.DefaultDrop> drops, Material material){
@@ -126,7 +131,7 @@ public class SereneMonster<T extends Entity> {
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(mob, 0.8));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(mob, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(mob));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(mob, Player.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(mob, Entity.class, true));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(mob, new Class[0]));
     }
 
@@ -138,7 +143,7 @@ public class SereneMonster<T extends Entity> {
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(mob, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(mob));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(mob, new Class[0]));
-//        this.targetSelector.addGoal(2, new Spider.SpiderTargetGoal(mob, Player.class));
+//        this.targetSelector.addGoal(2, new Spider.SpiderTargetGoal(mob, Entity.class));
 //        this.targetSelector.addGoal(3, new Spider.SpiderTargetGoal(mob, IronGolem.class));
     }
 
@@ -152,7 +157,7 @@ public class SereneMonster<T extends Entity> {
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(mob));
 //        this.goalSelector.addGoal(10, new EnderMan.EndermanLeaveBlockGoal(mob));
 //        this.goalSelector.addGoal(11, new EnderMan.EndermanTakeBlockGoal(mob));
-//        this.targetSelector.addGoal(1, new EnderMan.EndermanLookForPlayerGoal(mob, this::isAngryAt));
+//        this.targetSelector.addGoal(1, new EnderMan.EndermanLookForEntityGoal(mob, this::isAngryAt));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(mob, new Class[0]));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(mob, Endermite.class, true, false));
         this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal(mob, false));
@@ -162,8 +167,8 @@ public class SereneMonster<T extends Entity> {
 
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(mob, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(mob));
-//        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
-        this.goalSelector.addGoal(2, new BlazeAttackGoal(mob));
+        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
+//        this.goalSelector.addGoal(2, new BlazeAttackGoal(mob));
 //        this.goalSelector.addGoal(6, new MoveThroughVillageGoal(mob, 1.0, true, 4, this::canBreakDoors));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(mob, 1.0));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(mob, new Class[0])).setAlertOthers(new Class[]{ZombifiedPiglin.class}));

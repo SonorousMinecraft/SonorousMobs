@@ -1,5 +1,8 @@
 package com.sereneoasis;
 
+import com.sereneoasis.ability.BendingManager;
+import com.sereneoasis.ability.config.ConfigManager;
+import com.sereneoasis.ability.data.AbilityDataManager;
 import com.sereneoasis.command.SerenityCommand;
 import net.bytebuddy.agent.ByteBuddyAgent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,6 +12,9 @@ import java.util.logging.Level;
 public class SereneMobs extends JavaPlugin {
 
     public static SereneMobs plugin;
+
+    private static AbilityDataManager abilityDataManager;
+
 
     public static void main(String[] args) {
         ByteBuddyAgent.install();
@@ -20,10 +26,16 @@ public class SereneMobs extends JavaPlugin {
         getLogger().log(Level.INFO, "SereneMobs was enabled successfully.");
 
         this.getCommand("serenemobs").setExecutor(new SerenityCommand());
+
+        this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new BendingManager(), 0, 1);
+
+        new ConfigManager();
+        abilityDataManager = new AbilityDataManager();
+
     }
 
     @Override
     public void onDisable(){
-
+        super.onDisable();
     }
 }

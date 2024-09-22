@@ -9,8 +9,8 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
-import org.bukkit.entity.Player;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftEntity;
+import org.bukkit.entity.Entity;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -18,13 +18,13 @@ public class SerenityCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (commandSender instanceof Player player) {
+        if (commandSender instanceof Entity entity) {
 
             if (strings.length == 0) {
-                player.sendMessage("Specify an entity");
+                entity.sendMessage("Specify an entity");
             } else {
                 SereneMonster mob = null;
-                Location location = player.getLocation();
+                Location location = entity.getLocation();
                 try {
                     new SereneMonster((EntityType<? extends PathfinderMob>) EntityType.byString(strings[0]).get(), location);
                 } catch (InstantiationException e) {
