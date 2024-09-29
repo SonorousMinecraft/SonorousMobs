@@ -189,7 +189,7 @@ public abstract class CoreAbility implements Ability {
         this.range = 30;
         this.speed = 1;
         this.sourceRange = 20;
-        this.size = 0.4;
+        this.size = 1;
     }
 
     public void start() {

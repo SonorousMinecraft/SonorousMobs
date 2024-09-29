@@ -25,4 +25,9 @@ public class OceanVisual implements ArchetypeVisual {
         Particles.spawnParticle(Particle.WATER_BUBBLE, loc, amount, radius, 0);
         Particles.spawnColoredParticle(loc, colour, radius, size * 3, ArchetypeDataManager.getArchetypeData(Archetype.OCEAN).getRealColor());
     }
+
+    @Override
+    public void playDisplayBlock(Location loc, double size, double radius) {
+        TDBs.playTDBs(loc, DisplayBlock.WATER, 1, size, radius);
+    }
 }

@@ -25,4 +25,9 @@ public class EarthVisual implements ArchetypeVisual {
         Particles.spawnParticle(Particle.TOTEM, loc, amount, radius, 0);
         Particles.spawnColoredParticle(loc, colour, radius, size * 3, ArchetypeDataManager.getArchetypeData(Archetype.EARTH).getRealColor());
     }
+
+    @Override
+    public void playDisplayBlock(Location loc, double size, double radius) {
+        TDBs.playTDBs(loc, DisplayBlock.EARTH, 1, size, radius);
+    }
 }

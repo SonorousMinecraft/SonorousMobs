@@ -17,6 +17,14 @@ public class EnhancedSchedulerEffects {
         }
     }
 
+    public static void dropTDBs(Set<TempDisplayBlock> tempDisplayBlocks, int totalTicks, int increment) {
+        for (int i = 0; i < totalTicks; i += increment) {
+            Scheduler.performTaskLater(i, () -> {
+                tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().subtract(0,    5 * Constants.BLOCK_RAISE_SPEED, 0)));
+            });
+        }
+    }
+
     public static void clearTDBs(Set<TempDisplayBlock> tempDisplayBlocks, int ticks) {
         Scheduler.performTaskLater(ticks, () -> {
             tempDisplayBlocks.forEach(TempDisplayBlock::revert);

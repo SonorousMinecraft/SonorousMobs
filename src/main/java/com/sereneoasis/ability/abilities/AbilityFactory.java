@@ -18,10 +18,7 @@ import java.util.logging.Level;
 
 public class AbilityFactory {
 
-    Set<Class<?>> classes = ReflectionUtils.findAllClasses("com.sereneoasis.ability.utilities.particles");
-
-    Class<? extends CoreAbility> potentialAbilityClass;
-    Object[] initArgs;
+    Set<Class<?>> classes = ReflectionUtils.findAllClasses("com.sereneoasis.ability.utilities.blocks.requirestype.projectiles");
 
     public AbilityFactory(Entity entity){
         SereneEntity sereneEntity = SereneEntity.getSereneAbilitiesEntity(entity);
@@ -31,42 +28,21 @@ public class AbilityFactory {
         Random r = new Random();
 
         classes.stream().skip(r.nextInt(classes.size())).findFirst().ifPresent(aClass -> {
-                        Object[] initArgs = Arrays.stream(aClass.getDeclaredConstructors()[0].getParameterTypes()).map( (constructorType) ->
-                        {
-                            if (constructorType.equals(String.class)) {
-                                return archetypeName + aClass.getName();
-                            } else if (constructorType.equals(Entity.class)){
-                                return entity;
-                            } else if (constructorType.equals(boolean.class)){
-                                return true;
-                            } else if (constructorType.equals(Vector.class)){
-                                return entity.getLocation().getDirection();
-                            } else if (constructorType.equals(Location.class)){
-                                return entity.getLocation().add(0, Math.random()*entity.getHeight() * 3, 0);
-                            } else {
-                                Bukkit.getLogger().log(Level.SEVERE, "Parameter for an ability improperly matched " + constructorType.getName() + " ability " + aClass.getName());
-                                return null;
-                            }
-                        }).toArray();
-                        potentialAbilityClass = (Class<? extends CoreAbility>) aClass;
-                        this.initArgs = initArgs;
+
             try {
-                this.startAbility();
+                Bukkit.broadcastMessage("started ability " + aClass.getName());
+
+                aClass.getDeclaredConstructor(Entity.class, String.class).newInstance(entity, archetypeName+aClass.getName());
             } catch (InvocationTargetException e) {
                 throw new RuntimeException(e);
             } catch (InstantiationException e) {
                 throw new RuntimeException(e);
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
         });
     }
 
-
-    public void startAbility() throws InvocationTargetException, InstantiationException, IllegalAccessException {
-        Bukkit.broadcastMessage("started ability " + potentialAbilityClass.getName());
-
-        potentialAbilityClass.getDeclaredConstructors()[0].newInstance(initArgs);
-
-    }
 }

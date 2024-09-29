@@ -31,4 +31,10 @@ public class SkyVisual implements ArchetypeVisual {
 
 
     }
+
+    @Override
+    public void playDisplayBlock(Location loc, double size, double radius) {
+        TDBs.playTDBs(loc, DisplayBlock.AIR, 1, size, radius);
+        TDBs.playTDBs(loc, DisplayBlock.LIGHTNING, 1, size, radius);
+    }
 }

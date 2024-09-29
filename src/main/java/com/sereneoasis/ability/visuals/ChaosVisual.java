@@ -26,4 +26,9 @@ public class ChaosVisual implements ArchetypeVisual {
         Particles.spawnParticle(Particle.PORTAL, loc, amount, 0.2, 1);
         Particles.spawnColoredParticle(loc, colour, radius, size * 3, ArchetypeDataManager.getArchetypeData(Archetype.CHAOS).getRealColor());
     }
+
+    @Override
+    public void playDisplayBlock(Location loc, double size, double radius) {
+        TDBs.playTDBs(loc, DisplayBlock.CHAOS, 1, size, radius);
+    }
 }

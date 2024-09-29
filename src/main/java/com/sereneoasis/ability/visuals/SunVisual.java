@@ -33,4 +33,9 @@ public class SunVisual implements ArchetypeVisual {
 
         }
     }
+
+    @Override
+    public void playDisplayBlock(Location loc, double size, double radius) {
+        TDBs.playTDBs(loc, DisplayBlock.SUN, 1, size, radius);
+    }
 }
