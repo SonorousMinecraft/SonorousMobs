@@ -22,13 +22,11 @@ public class Breath extends CoreAbility {
     private Set<Location> locs = new HashSet<>();
 
     private Random random = new Random();
-    private Particle particle;
 
 
-    public Breath(Entity entity, String name, Particle particle) {
+    public Breath(Entity entity, String name) {
         super(entity, name);
         
-        this.particle = particle;
 
             abilityStatus = AbilityStatus.SHOOTING;
             start();
@@ -44,8 +42,8 @@ public class Breath extends CoreAbility {
 
         Vector dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection();
         Location startLoc = entity.getLocation().add(0,entity.getHeight()-0.5, 0).add(dir.clone().multiply(speed));
-        if (locs.size() < 1000) {
-            for (int i = 0; i < 100; i++) {
+        if (locs.size() < 100) {
+            for (int i = 0; i < 20; i++) {
                 locs.add(startLoc.clone());
 //                locs.add(startLoc.clone().add(getRandomOffset()));
             }
@@ -53,7 +51,9 @@ public class Breath extends CoreAbility {
 
         locs.forEach(location -> {
             location.add(dir.clone().multiply(random.nextDouble() * speed).add(getRandomOffset().multiply(Math.log(location.distance(startLoc) + 2))));
-            Particles.spawnParticle(particle, location, 1, 0, 0);
+
+            archetype.getArchetypeVisual().playVisual(location, size, 0.1, 1, 1, 1);
+
 
             AbilityDamage.damageOne(location, this, entity, true, dir);
         });

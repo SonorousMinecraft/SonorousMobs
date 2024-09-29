@@ -1,33 +1,37 @@
 package com.sereneoasis.ability;
 
-import org.bukkit.inventory.meta.trim.ArmorTrim;
-import org.bukkit.inventory.meta.trim.TrimMaterial;
-import org.bukkit.inventory.meta.trim.TrimPattern;
+import com.sereneoasis.ability.visuals.*;
 
 /**
  * @author Sakrajin
  * Enums to represent different archetypes
  */
 public enum Archetype {
-    NONE("none"),
+    NONE("none", null),
 
-    EARTH("earth"),
+    EARTH("earth", new EarthVisual()),
 
-    CHAOS("chaos"),
+    CHAOS("chaos", new ChaosVisual()),
 
-    SUN("sun"),
+    SUN("sun", new SunVisual()),
 
-    SKY("sky"),
-    OCEAN("ocean");
+    SKY("sky", new SkyVisual()),
+    OCEAN("ocean", new OceanVisual());
 
 
     private String name;
 
+    private ArchetypeVisual archetypeVisual;
 
-    Archetype(String name) {
+
+    Archetype(String name, ArchetypeVisual archetypeVisual) {
         this.name = name;
+        this.archetypeVisual = archetypeVisual;
     }
 
+    public ArchetypeVisual getArchetypeVisual() {
+        return archetypeVisual;
+    }
 
     @Override
     public String toString() {

@@ -5,7 +5,6 @@ import com.sereneoasis.util.*;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 import java.util.List;
@@ -16,14 +15,12 @@ public class Blade extends CoreAbility {
 
     private Location origin, loc1, loc2;
 
-    private ArchetypeVisuals.ArchetypeVisual archetypeVisual;
-
     private Vector dir;
 
-    public Blade(Entity entity, String name, ArchetypeVisuals.ArchetypeVisual archetypeVisual, Location loc1, Location loc2) {
+    public Blade(Entity entity, String name, Location loc1, Location loc2) {
         super(entity, name);
 
-        this.archetypeVisual = archetypeVisual;
+
         this.name = name;
         this.loc1 = loc1.clone();
         this.loc2 = loc2.clone();
@@ -44,7 +41,8 @@ public class Blade extends CoreAbility {
             //Particles.playParticlesBetweenPoints(particle, loc1, loc2, 0.1, 5, 0.5, 0);
 
             for (Location loc : Locations.getPointsAlongLine(loc1, loc2, size)) {
-                archetypeVisual.playVisual(loc, size, 0.1, 10, 1, 5);
+                archetype.getArchetypeVisual().playVisual(loc, size, 0.1, 1, 1, 5);
+
             }
 
             if (Entities.getEntityBetweenPoints(loc1, loc2) != null) {

@@ -40,7 +40,8 @@ public enum DisplayBlock {
     //    LIGHTNING(new ArrayList<>(List.of(new Material[]{Material.BLUE_STAINED_GLASS, Material.LIGHT_BLUE_STAINED_GLASS}))),
     LIGHTNING(new ArrayList<>(List.of(new Material[]{Material.DIAMOND_BLOCK, Material.WHITE_CONCRETE}))),
 
-    CHAOS(new ArrayList<>(List.of(new Material[]{Material.BLUE_STAINED_GLASS})));
+    CHAOS(new ArrayList<>(List.of(new Material[]{Material.CRYING_OBSIDIAN, Material.OBSIDIAN}))),
+    EARTH(new ArrayList<>(List.of(new Material[]{Material.COARSE_DIRT, Material.DIRT, Material.MUD})));
 
     List<Material> blocks = new ArrayList<>();
 

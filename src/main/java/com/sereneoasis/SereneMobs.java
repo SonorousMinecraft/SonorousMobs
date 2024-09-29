@@ -3,6 +3,7 @@ package com.sereneoasis;
 import com.sereneoasis.ability.BendingManager;
 import com.sereneoasis.ability.config.ConfigManager;
 import com.sereneoasis.ability.data.AbilityDataManager;
+import com.sereneoasis.ability.data.ArchetypeDataManager;
 import com.sereneoasis.command.SerenityCommand;
 import net.bytebuddy.agent.ByteBuddyAgent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +16,11 @@ public class SereneMobs extends JavaPlugin {
 
     private static AbilityDataManager abilityDataManager;
 
+    private static ArchetypeDataManager archetypeDataManager;
+
+    public static ArchetypeDataManager getArchetypeDataManager() {
+        return archetypeDataManager;
+    }
 
     public static void main(String[] args) {
         ByteBuddyAgent.install();
@@ -30,6 +36,9 @@ public class SereneMobs extends JavaPlugin {
         this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new BendingManager(), 0, 1);
 
         new ConfigManager();
+
+        archetypeDataManager = new ArchetypeDataManager();
+
         abilityDataManager = new AbilityDataManager();
 
     }

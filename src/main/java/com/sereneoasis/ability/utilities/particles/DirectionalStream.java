@@ -2,7 +2,8 @@ package com.sereneoasis.ability.utilities.particles;
 
 import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.util.AbilityStatus;
-import com.sereneoasis.util.ArchetypeVisuals;
+import com.sereneoasis.util.DamageHandler;
+import com.sereneoasis.util.Entities;
 import com.sereneoasis.util.Vectors;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -22,13 +23,14 @@ public class DirectionalStream extends CoreAbility {
     private Random random = new Random();
     private Vector dir;
 
-    public DirectionalStream(Entity entity, String name, Particle particle, Vector dir) {
+    private boolean shouldDamage;
+    public DirectionalStream(Entity entity, String name, Particle particle, Vector dir, boolean shouldDamage) {
         super(entity, name);
         
         this.particle = particle;
 
         this.dir = dir;
-
+        this.shouldDamage = shouldDamage;
             abilityStatus = AbilityStatus.SHOOTING;
             start();
 
@@ -57,10 +59,14 @@ public class DirectionalStream extends CoreAbility {
         locs.forEach(location -> {
 //            location.setDirection(dir.clone());
             Vector newDir = Vectors.getDirectionBetweenLocations(location, randomVertex(location, endLoc)).normalize();
-            location.setDirection(location.getDirection().add(newDir.clone().multiply(0.2)));
+            location.setDirection(location.getDirection().add(newDir.clone().multiply(0.05)));
             location.add(location.getDirection().clone());
 
-            new ArchetypeVisuals.AirVisual().playVisual(location, size, 0, 1, 1, 1);
+            if (shouldDamage){
+                DamageHandler.damageEntity(Entities.getAffected(location, hitbox, entity), entity, this, damage);
+            }
+            archetype.getArchetypeVisual().playVisual(location, size, 0, 1, 1, 1);
+
 
 //            Particles.spawnParticle(particle, location, 1, 0, 0);
 

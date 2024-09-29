@@ -3,7 +3,7 @@
 //import com.sereneoasis.ability.CoreAbility;
 //import com.sereneoasis.ability.utilities.particles.Blade;
 //import com.sereneoasis.util.AbilityStatus;
-//import com.sereneoasis.util.ArchetypeVisuals;
+//import com.sereneoasis.ability.visuals.ArchetypeVisuals;
 //import com.sereneoasis.util.Locations;
 //import org.bukkit.Location;
 //import org.bukkit.Particle;
@@ -28,7 +28,7 @@
 //        loc2 = Locations.getFacingLocation(entity.getLocation().add(0,entity.getHeight(),0), entity.getLocation().getDirection(), sourceRange).clone();
 //
 //        if (loc1 != null && loc2 != null) {
-//            blade = new Blade(entity, "SkyBlade", new ArchetypeVisuals.AirVisual(), loc1, loc2);
+//            blade = new Blade(entity, "SkyBlade", new ArchetypeVisuals.SkyVisual(), loc1, loc2);
 //        } else {
 //            this.remove();
 //        }

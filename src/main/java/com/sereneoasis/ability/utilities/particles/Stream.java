@@ -1,10 +1,7 @@
 package com.sereneoasis.ability.utilities.particles;
 
 import com.sereneoasis.ability.CoreAbility;
-import com.sereneoasis.util.AbilityStatus;
-import com.sereneoasis.util.AbilityDamage;
-import com.sereneoasis.util.Particles;
-import com.sereneoasis.util.Vectors;
+import com.sereneoasis.util.*;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
@@ -19,14 +16,11 @@ public class Stream extends CoreAbility {
     
 
     protected Set<Location> locs = new HashSet<>();
-    protected Particle particle;
     private Random random = new Random();
-    private Vector offset = null;
 
-    public Stream(Entity entity, String name, Particle particle) {
+    public Stream(Entity entity, String name) {
         super(entity, name);
         
-        this.particle = particle;
             abilityStatus = AbilityStatus.SHOOTING;
             start();
 
@@ -43,8 +37,14 @@ public class Stream extends CoreAbility {
         Location startLoc = entity.getLocation().add(0,entity.getHeight()-0.5, 0).add(dir.clone().multiply(speed));
         Location endLoc = entity.getLocation().add(0,entity.getHeight()-0.5, 0).add(dir.clone().multiply(range));
 
-        if (locs.size() < 10000) {
-            for (int i = 0; i < 100; i++) {
+
+        if (Entities.getEntityBetweenPoints(startLoc, endLoc) != null) {
+            DamageHandler.damageEntity(Entities.getEntityBetweenPoints(startLoc, endLoc), entity, this, damage);
+        }
+
+
+        if (locs.size() < 100) {
+            for (int i = 0; i < 10; i++) {
                 Location location = startLoc.clone();
                 Vector newDir = Vectors.getDirectionBetweenLocations(location, randomMidwayVertex(endLoc, location)).normalize();
                 location.setDirection(newDir);
@@ -59,9 +59,7 @@ public class Stream extends CoreAbility {
             Vector newDir = Vectors.getDirectionBetweenLocations(location, randomMidwayVertex(endLoc, location)).normalize();
             location.setDirection(location.getDirection().add(newDir.clone().multiply(0.1)).normalize());
             location.add(location.getDirection().clone());
-            Particles.spawnParticle(particle, location, 1, 0, 0);
-
-            AbilityDamage.damageOne(location, this, entity, true, dir);
+            archetype.getArchetypeVisual().playVisual(location, size, 0.1, 1, 1, 1);
 
 
         });

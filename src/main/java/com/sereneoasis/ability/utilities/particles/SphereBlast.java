@@ -3,10 +3,8 @@ package com.sereneoasis.ability.utilities.particles;
 import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.util.AbilityStatus;
 import com.sereneoasis.util.DamageHandler;
-import com.sereneoasis.util.ArchetypeVisuals;
 import com.sereneoasis.util.Entities;
 import com.sereneoasis.util.Locations;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -25,16 +23,15 @@ public class SphereBlast extends CoreAbility {
 
     private String name;
 
-    private ArchetypeVisuals.ArchetypeVisual archetypeVisual;
-
     private boolean shouldDamage;
 
 
-    public SphereBlast(Entity entity, String name, boolean directable, ArchetypeVisuals.ArchetypeVisual archetypeVisual, boolean shoulDamage) {
+    public SphereBlast(Entity entity, String name, boolean directable, boolean shoulDamage) {
         super(entity, name);
         
         this.directable = directable;
-        this.archetypeVisual = archetypeVisual;
+
+        this.shouldDamage = shoulDamage;
         this.loc = entity.getLocation().add(0,entity.getHeight()-0.5, 0);
         this.origin = loc.clone();
         this.dir = loc.getDirection();
@@ -56,14 +53,14 @@ public class SphereBlast extends CoreAbility {
         loc.add(dir.clone().multiply(speed));
 
 
-        for (Location loc : Locations.getSphere(loc, radius, 12)) {
-            archetypeVisual.playVisual(loc, size, 0, 1, 1, 1);
+        for (Location loc : Locations.getSphere(loc, radius, 4)) {
+            archetype.getArchetypeVisual().playVisual(loc, size, 0.1, 1, 1, 5);
         }
 
         if (shouldDamage) {
-            DamageHandler.damageEntity(Entities.getAffected(loc, hitbox, entity), entity, this, damage);
-            if (!Entities.getAffected(loc, hitbox, entity).isEmpty()) {
-                Bukkit.broadcastMessage("should be damaging");
+
+            if (DamageHandler.damageEntity(Entities.getAffected(loc, hitbox, entity), entity, this, damage)){
+                abilityStatus = AbilityStatus.DAMAGED;
             }
         }
 

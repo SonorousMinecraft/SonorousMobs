@@ -1,5 +1,6 @@
 package com.sereneoasis.command;
 
+import com.sereneoasis.ability.Archetype;
 import com.sereneoasis.mobs.SereneMonster;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
@@ -26,14 +27,15 @@ public class SerenityCommand implements CommandExecutor {
                 SereneMonster mob = null;
                 Location location = entity.getLocation();
                 try {
-                    new SereneMonster((EntityType<? extends PathfinderMob>) EntityType.byString(strings[0]).get(), location);
-                } catch (InstantiationException e) {
-                    throw new RuntimeException(e);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                } catch (NoSuchMethodException e) {
-                    throw new RuntimeException(e);
-                } catch (InvocationTargetException e) {
+                    if (strings.length == 1){
+                        entity.sendMessage("Specify an archetype");
+                    }
+                    else {
+                        Archetype archetype = Archetype.valueOf(strings[1]);
+                        new SereneMonster((EntityType<? extends PathfinderMob>) EntityType.byString(strings[0]).get(), location, archetype);
+                    }
+                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
+                         InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }
 //                switch (strings[0]) {

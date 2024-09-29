@@ -3,7 +3,6 @@ package com.sereneoasis.ability.utilities.particles;
 import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.util.AbilityStatus;
 import com.sereneoasis.util.AbilityDamage;
-import com.sereneoasis.util.ArchetypeVisuals;
 import com.sereneoasis.util.Vectors;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -21,7 +20,7 @@ public class Arc extends CoreAbility {
     private Set<Location> locs = new HashSet<>();
 
     private Random random = new Random();
-    private Particle particle;
+
 
     private Vector offset = null;
 
@@ -29,10 +28,9 @@ public class Arc extends CoreAbility {
 
     private OutputLocation outputLocation;
 
-    public Arc(Entity entity, String name, Particle particle) {
+    public Arc(Entity entity, String name) {
         super(entity, name);
-        
-        this.particle = particle;
+
         this.outputLocation = OutputLocation.MAINHAND;
             abilityStatus = AbilityStatus.SHOOTING;
             start();
@@ -113,7 +111,7 @@ public class Arc extends CoreAbility {
             //Particles.spawnColoredParticle(temploc, 1, 0.05, 1, Color.fromRGB(1, 225, 255));
 //            TDBs.playTDBs(temploc, DisplayBlock.LIGHTNING, 1, size, 0);
 //            Particles.spawnParticle(particle, temploc, 1, 0, 0);
-            new ArchetypeVisuals.LightningVisual().playVisual(temploc, size, size / 2, 0, 1, 0);
+            archetype.getArchetypeVisual().playVisual(temploc, size, size/2, 1, 1, 1);
 
 
         }

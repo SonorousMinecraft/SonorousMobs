@@ -50,7 +50,7 @@ public class SereneMonster<T extends Entity> {
 
 
 
-    public SereneMonster(EntityType<T> type , Location location) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public SereneMonster(EntityType<T> type , Location location, Archetype archetype) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Level world = ((CraftWorld) location.getWorld()).getHandle();
 //        BlockPos pos = BlockPos.containing(new Vec3(location.toVector().toVector3f()));
         Class<? extends PathfinderMob> entityClass = (Class<? extends PathfinderMob>) type.create(world).getClass();
@@ -86,7 +86,7 @@ public class SereneMonster<T extends Entity> {
 //        this.mob = (PathfinderMob) enhancer.create(constructor.getParameterTypes(), new Object[]{type, world});
         world.addFreshEntity(mob);
 
-        new SereneEntity(mob.getBukkitEntity(), Archetype.SKY);
+        new SereneEntity(mob.getBukkitEntity(), archetype);
 
 //        this.mob = type.spawn(world.getMinecraftWorld(), pos, MobSpawnType.NATURAL);
         this.mob.moveTo(new Vec3(location.toVector().toVector3f()));
