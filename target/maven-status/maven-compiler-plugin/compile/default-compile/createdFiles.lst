@@ -13,6 +13,7 @@ com/sereneoasis/util/ArchetypeVisuals$SunVisual.class
 com/sereneoasis/util/ArchetypeVisuals$SnowVisual.class
 com/sereneoasis/ability/utilities/blocks/RaiseBlockCircle.class
 com/sereneoasis/ability/data/ArchetypeDataManager.class
+com/sereneoasis/util/ReflectionUtils.class
 com/sereneoasis/util/TDBs.class
 com/sereneoasis/ability/data/ArchetypeData.class
 com/sereneoasis/mobs/goals/ZombieAttackGoal.class
@@ -30,7 +31,6 @@ com/sereneoasis/ability/utilities/particles/Arc.class
 com/sereneoasis/ability/abilities/MasterAbility$HelperTick.class
 com/sereneoasis/ability/utilities/blocks/BlockAbilities.class
 com/sereneoasis/ability/utilities/blocks/RaiseBlockPillar.class
-com/sereneoasis/ability/utilities/particles/ChargeSphere.class
 com/sereneoasis/util/DamageHandler.class
 com/sereneoasis/util/AbilityStatus.class
 com/sereneoasis/util/Locations.class
@@ -40,7 +40,6 @@ com/sereneoasis/ability/utilities/particles/Blast.class
 com/sereneoasis/ability/utilities/blocks/ShootBlockShapeFromLoc.class
 com/sereneoasis/util/Particles.class
 com/sereneoasis/ability/abilities/DisplayBlock.class
-com/sereneoasis/ability/utilities/particles/SourcedBlast.class
 com/sereneoasis/util/Locations$Line.class
 com/sereneoasis/util/Blocks.class
 com/sereneoasis/ability/utilities/blocks/BlockAbilities$1.class
@@ -52,7 +51,7 @@ com/sereneoasis/ability/utilities/particles/Sweep.class
 com/sereneoasis/util/Entities.class
 com/sereneoasis/util/ArchetypeVisuals$LightningVisual.class
 com/sereneoasis/ability/config/ConfigManager.class
-com/sereneoasis/ability/utilities/velocity/Teleport.class
+com/sereneoasis/ability/abilities/AbilityFactory.class
 com/sereneoasis/command/SerenityCommand.class
 com/sereneoasis/util/enhancedmethods/EnhancedBlocks.class
 com/sereneoasis/mobs/SereneMob.class
@@ -85,10 +84,8 @@ com/sereneoasis/ability/utilities/particles/Stream.class
 com/sereneoasis/ability/utilities/blocks/RaiseBlockPillarDamage.class
 com/sereneoasis/ability/utilities/blocks/Laser.class
 com/sereneoasis/ability/utilities/velocity/Jet.class
-com/sereneoasis/ability/abilities/sky/SkyBlade.class
 com/sereneoasis/ability/utilities/blocks/BlockExplodeSphere.class
 com/sereneoasis/ability/utilities/blocks/forcetype/ShootBlocksFromLocGivenType.class
-com/sereneoasis/ability/utilities/blocks/forcetype/BlockSweepGivenType.class
 com/sereneoasis/ability/utilities/particles/Beam.class
 com/sereneoasis/ability/utilities/blocks/BlockCreateSphere.class
 com/sereneoasis/ability/utilities/blocks/ShootBlockFromLoc.class

@@ -29,11 +29,11 @@ public class Arc extends CoreAbility {
 
     private OutputLocation outputLocation;
 
-    public Arc(Entity entity, String name, Particle particle, OutputLocation outputLocation) {
+    public Arc(Entity entity, String name, Particle particle) {
         super(entity, name);
         
         this.particle = particle;
-        this.outputLocation = outputLocation;
+        this.outputLocation = OutputLocation.MAINHAND;
             abilityStatus = AbilityStatus.SHOOTING;
             start();
 

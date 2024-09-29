@@ -183,7 +183,7 @@ public class SereneMob {
         entity.level().getProfiler().pop();
         
 //        entity.level().getProfiler().push("jump");
-//        if (entity.jumping && entity.isAffectedByFluids()) {
+//        if (entity.jumping) {
 //            double d3;
 //            if (entity.isInLava()) {
 //                d3 = entity.getFluidHeight(FluidTags.LAVA);
@@ -210,8 +210,8 @@ public class SereneMob {
 //        } else {
 //            entity.noJumpDelay = 0;
 //        }
-
-        entity.level().getProfiler().pop();
+//
+//        entity.level().getProfiler().pop();
         entity.level().getProfiler().push("travel");
         entity.xxa *= 0.98F;
         entity.zza *= 0.98F;
@@ -307,9 +307,9 @@ public class SereneMob {
             entity.getMoveControl().tick();
             entity.level().getProfiler().popPush("look");
             entity.getLookControl().tick();
-            entity.level().getProfiler().popPush("jump");
-            entity.getJumpControl().tick();
-            entity.level().getProfiler().pop();
+//            entity.level().getProfiler().popPush("jump");
+//            entity.getJumpControl().tick();
+//            entity.level().getProfiler().pop();
             entity.level().getProfiler().pop();
 //            entity.sendDebugPackets();
         }

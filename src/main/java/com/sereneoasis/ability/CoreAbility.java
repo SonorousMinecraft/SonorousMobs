@@ -31,7 +31,7 @@ public abstract class CoreAbility implements Ability {
     protected Entity entity;
     protected SereneEntity sEntity;
     protected Archetype archetype;
-    protected long startTime, chargeTime, duration;
+    protected long startTime, duration;
     protected double damage, hitbox, radius, range, speed, sourceRange, size;
 
     private String name;
@@ -79,15 +79,6 @@ public abstract class CoreAbility implements Ability {
 
 
 
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public long getChargeTime() {
-        return chargeTime;
-    }
-
-
     public long getDuration() {
         return duration;
     }
@@ -115,7 +106,6 @@ public abstract class CoreAbility implements Ability {
     public double getSourceRange() {
         return sourceRange;
     }
-
     public double getSize() {
         return size;
     }
@@ -132,14 +122,25 @@ public abstract class CoreAbility implements Ability {
     private void initialiseConfigVariables(AbilityData abilityData) {
 
         this.startTime = System.currentTimeMillis();
-        this.duration = abilityData.getDuration();
 
-        this.damage = abilityData.getDamage();
-        this.hitbox = abilityData.getHitbox();
-        this.radius = abilityData.getRadius();
-        this.range = abilityData.getRange();
-        this.speed = abilityData.getSpeed();
-        this.size = abilityData.getSize();
+//        this.duration = abilityData.getDuration();
+//
+//        this.damage = abilityData.getDamage();
+//        this.hitbox = abilityData.getHitbox();
+//        this.radius = abilityData.getRadius();
+//        this.range = abilityData.getRange();
+//        this.speed = abilityData.getSpeed();
+//        this.size = abilityData.getSize();
+
+        this.duration = 1000;
+
+        this.damage = 1;
+        this.hitbox = 1;
+        this.radius = 1;
+        this.range = 30;
+        this.speed = 2;
+        this.sourceRange = 20;
+        this.size = 0.2;
     }
 
     public void start() {

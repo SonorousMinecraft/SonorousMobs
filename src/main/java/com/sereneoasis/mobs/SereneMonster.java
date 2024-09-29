@@ -114,7 +114,7 @@ public class SereneMonster<T extends Entity> {
         addDefaultDrop(drops, Material.ICE);
         mob.drops = drops;
 
-        registerCreeperGoals();
+        registerZombieGoals();
     }
 
     private void addDefaultDrop(ArrayList<Entity.DefaultDrop> drops, Material material){
@@ -167,8 +167,8 @@ public class SereneMonster<T extends Entity> {
 
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(mob, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(mob));
-        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
-//        this.goalSelector.addGoal(2, new BlazeAttackGoal(mob));
+//        this.goalSelector.addGoal(2, new ZombieAttackGoal(mob, 1.0, false));
+        this.goalSelector.addGoal(2, new BlazeAttackGoal(mob));
 //        this.goalSelector.addGoal(6, new MoveThroughVillageGoal(mob, 1.0, true, 4, this::canBreakDoors));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(mob, 1.0));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(mob, new Class[0])).setAlertOthers(new Class[]{ZombifiedPiglin.class}));

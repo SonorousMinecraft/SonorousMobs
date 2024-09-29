@@ -45,10 +45,15 @@ public class Sweep extends CoreAbility {
             loc1.add(dir1.clone());
             loc2.add(dir2.clone());
 
-            List<Location> locs = Locations.getArc(loc1, loc2, origin, 0.2);
+            List<Location> locs = Locations.getArc(loc1, loc2, origin, size/2);
             //List<Location> locs = List.of(new Location[]{loc1, loc2});
             for (Location loc : locs) {
-                archetypeVisual.playVisual(loc, size, 0.1, 10, 1, 5);
+                try {
+                    loc.checkFinite();
+                    archetypeVisual.playVisual(loc, size, 0.1, 10, 1, 5);
+                } catch (IllegalArgumentException ignored){
+
+                }
             }
 
             DamageHandler.damageEntity(Entities.getEntityBetweenPoints(loc1, loc2), entity, this, damage);

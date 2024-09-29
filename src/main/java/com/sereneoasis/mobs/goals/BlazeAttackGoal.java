@@ -1,7 +1,8 @@
 package com.sereneoasis.mobs.goals;
 
 import com.sereneoasis.SereneMobs;
-import com.sereneoasis.ability.abilities.sky.SkyBlade;
+import com.sereneoasis.ability.abilities.AbilityFactory;
+
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -72,7 +73,7 @@ public class BlazeAttackGoal extends Goal {
                 }
 
                 this.blaze.getMoveControl().setWantedPosition(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), 1.0);
-                
+
             } else if (distanceToSqr < this.getFollowDistance() * this.getFollowDistance() && hasLineOfSight) {
 
 
@@ -92,8 +93,10 @@ public class BlazeAttackGoal extends Goal {
                     }
 
                     if (this.attackStep > 1) {
-                        new SkyBlade(blaze.getBukkitLivingEntity());
-
+//                        new SkyBlade(blaze.getBukkitLivingEntity());
+                        new AbilityFactory(blaze.getBukkitEntity());
+//                        this.attackStep = 0;
+//                        this.attackTime = 100;
                     }
                 }
 
