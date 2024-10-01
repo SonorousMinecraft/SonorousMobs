@@ -94,7 +94,8 @@ public class BlazeAttackGoal extends Goal {
 
                     if (this.attackStep > 1) {
 //                        new SkyBlade(blaze.getBukkitLivingEntity());
-                        CoreAbility.getAbilities(blaze.getBukkitEntity() ).forEach(ability -> ability.remove());
+
+//                        CoreAbility.getAbilities(blaze.getBukkitEntity() ).forEach(ability -> ability.remove());
 
 
 

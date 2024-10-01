@@ -50,6 +50,7 @@ public class RaiseBlockPillarLine extends BlockLine {
     @Override
     public void remove() {
         super.remove();
-//        pillars.forEach(CoreAbility::remove);
+        pillars.forEach(RaiseBlockPillar::drop);
+
     }
 }

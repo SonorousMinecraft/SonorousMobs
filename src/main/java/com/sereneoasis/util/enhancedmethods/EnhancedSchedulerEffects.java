@@ -12,7 +12,7 @@ public class EnhancedSchedulerEffects {
     public static void raiseTDBs(Set<TempDisplayBlock> tempDisplayBlocks, int totalTicks, int increment) {
         for (int i = 0; i < totalTicks; i += increment) {
             Scheduler.performTaskLater(i, () -> {
-                tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().add(0, (Math.random() + 1) * 5 * Constants.BLOCK_RAISE_SPEED, 0)));
+                tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().add(0, Math.random()  * Constants.BLOCK_RAISE_SPEED, 0)));
             });
         }
     }
@@ -20,7 +20,7 @@ public class EnhancedSchedulerEffects {
     public static void dropTDBs(Set<TempDisplayBlock> tempDisplayBlocks, int totalTicks, int increment) {
         for (int i = 0; i < totalTicks; i += increment) {
             Scheduler.performTaskLater(i, () -> {
-                tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().subtract(0,    5 * Constants.BLOCK_RAISE_SPEED, 0)));
+                tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().subtract(0,   Math.random()  * Constants.BLOCK_RAISE_SPEED, 0)));
             });
         }
     }

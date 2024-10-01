@@ -62,7 +62,7 @@ public class BlockLine extends CoreAbility {
 
                 boolean isFinished = AbilityDamage.damageOne(loc.clone().add(0, size / 2, 0), this, entity, true, dir);
 
-                tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().add(0, ( Math.random() + 1) * Constants.BLOCK_RAISE_SPEED * speed, 0)));
+                EnhancedSchedulerEffects.raiseTDBs(tempDisplayBlocks, 20, 10);
 
                 if (isFinished) {
                     abilityStatus = AbilityStatus.COMPLETE;

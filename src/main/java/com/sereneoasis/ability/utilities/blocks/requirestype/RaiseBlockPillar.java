@@ -5,6 +5,7 @@ import com.sereneoasis.util.*;
 import com.sereneoasis.ability.temp.TempBlock;
 
 import com.sereneoasis.ability.temp.TempDisplayBlock;import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -24,6 +25,8 @@ public class RaiseBlockPillar extends CoreAbility {
 
     protected boolean isFalling = false;
 
+    private Material type;
+
     public RaiseBlockPillar(Entity entity, String name) {
         super(entity, name);
 
@@ -37,7 +40,7 @@ public class RaiseBlockPillar extends CoreAbility {
             this.origin = source.getLocation();
 //            Blocks.selectSourceAnimationBlock(source, Color.GREEN);
             this.loc = origin.clone();
-
+            this.type = source.getType();
             while (Blocks.getArchetypeBlocks(sEntity).contains(loc.getBlock().getType()) && currentHeight > 0) {
                 TempDisplayBlock displayBlock = new TempDisplayBlock(loc.getBlock(), loc.getBlock().getType(), 60000, 1);
                 blocks.add(displayBlock);
@@ -66,8 +69,10 @@ public class RaiseBlockPillar extends CoreAbility {
             this.origin = targetBlock.getLocation();
             // Blocks.selectSourceAnimationBlock(targetBlock, Color.GREEN);
             this.loc = origin.clone();
+            this.type = targetBlock.getType();
+
             while ( (!needsBeneath || Blocks.getArchetypeBlocks(sEntity).contains(loc.getBlock().getType())) && currentHeight > 0) {
-                TempDisplayBlock displayBlock = new TempDisplayBlock(loc.getBlock(), loc.getBlock().getType(), 60000, 1);
+                TempDisplayBlock displayBlock = new TempDisplayBlock(loc.getBlock(), type, 60000, 1);
                 blocks.add(displayBlock);
                 currentHeight--;
                 loc.subtract(0, 1, 0);
@@ -84,8 +89,7 @@ public class RaiseBlockPillar extends CoreAbility {
     public void progress() throws ReflectiveOperationException {
 
         if (abilityStatus != AbilityStatus.COMPLETE && !isFalling) {
-            if (currentHeight - size > height) {
-
+            if (currentHeight + size + Constants.BLOCK_RAISE_SPEED*speed > height) {
                 abilityStatus = AbilityStatus.COMPLETE;
             } else {
                 for (TempDisplayBlock tdb : blocks) {
@@ -95,13 +99,11 @@ public class RaiseBlockPillar extends CoreAbility {
                 Block topBlock = origin.clone().add(0, currentHeight, 0).getBlock();
                 if (!solidifiedBlocks.contains(topBlock)) {
                     if (currentHeight >= 1) {
-                        TempDisplayBlock tdb = blocks.get(((int) currentHeight) - 1);
                         if (topBlock.isPassable()) {
-                            solidBlocks.add(new TempBlock(topBlock, tdb.getBlockDisplay().getBlock().getMaterial(), 60000));
+                            solidBlocks.add(new TempBlock(topBlock, type, 60000));
                         }
                         solidifiedBlocks.add(topBlock);
                     }
-
                 }
 
                 currentHeight += Constants.BLOCK_RAISE_SPEED * speed;
@@ -112,7 +114,7 @@ public class RaiseBlockPillar extends CoreAbility {
 
         if (isFalling && currentHeight > 0 && abilityStatus != AbilityStatus.DROPPED) {
             for (TempDisplayBlock tdb : blocks) {
-                tdb.moveTo(tdb.getBlockDisplay().getLocation().subtract(0, Constants.BLOCK_RAISE_SPEED * speed, 0));
+                tdb.moveTo(tdb.getBlockDisplay().getLocation().subtract(0, Constants.BLOCK_RAISE_SPEED * speed * 2, 0));
             }
             currentHeight -= Constants.BLOCK_RAISE_SPEED * speed;
         }
@@ -123,32 +125,17 @@ public class RaiseBlockPillar extends CoreAbility {
 
     public void drop() {
         if (!isFalling) {
+//            blocks.forEach(TempDisplayBlock::revert);
             isFalling = true;
-            solidBlocks.removeIf(tempBlock -> tempBlock.getBlock() == null);
-            for (TempBlock b : solidBlocks) {
-                TempDisplayBlock displayBlock = new TempDisplayBlock(b.getBlock().getLocation(), b.getBlock().getType(), 60000, 1);
-                blocks.add(displayBlock);
-                b.revert();
-            }
+            solidBlocks.forEach(TempBlock::revert);
+
         }
     }
 
-
-    public void revertAllTempDisplayBlocks() {
-
-        for (TempDisplayBlock tdb : blocks) {
-            tdb.revert();
-            Scheduler.performTaskLater(100, () -> {
-                solidBlocks.forEach(tempBlock -> tempBlock.revert());
-
-            } );
-        }
-    }
 
     @Override
     public void remove() {
         super.remove();
-        revertAllTempDisplayBlocks();
     }
 
     
