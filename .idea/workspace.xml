@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f190fc5f-da06-4b47-b9c8-e89ae48867d8" name="Changes" comment="Improvements to visuals">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/util/Collections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.paper-nms/classes.json" beforeDir="false" afterPath="$PROJECT_DIR$/.paper-nms/classes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/abilities/AbilityFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/abilities/AbilityFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/temp/TempDisplayBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/temp/TempDisplayBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockShapeFromLoc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLoc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/requirestype/RaiseBlockPillar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/requirestype/RaiseBlockPillar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/goals/BlazeAttackGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/goals/BlazeAttackGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/abilities/AbilityFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/abilities/AbilityFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockShapeFromLoc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLoc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/goals/BlazeAttackGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/goals/BlazeAttackGoal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-SereneMobs-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-SereneMobs-1.0-SNAPSHOT.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ability-framework" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="3d2f9251-4a4f-4407-b3b3-a347ab8e5497" />
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SORT_ALPHABETICALLY" value="true" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2mFLwtpooMdi5Uf1lmFQGWpZ6rD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;block-abilities&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sujan/IdeaProjects/SereneMobs/src/main/java/com/sereneoasis/util&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/sereneoasis/util" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/data" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sereneoasis.util" />
+      <recent name="com.sereneoasis.ability.abilities" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f190fc5f-da06-4b47-b9c8-e89ae48867d8" name="Changes" comment="" />
+      <created>1726667618992</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726667618992</updated>
+      <workItem from="1726667620008" duration="33135000" />
+      <workItem from="1726753025026" duration="29544000" />
+      <workItem from="1727603664109" duration="19766000" />
+      <workItem from="1728142021729" duration="5071000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initialise project">
+      <option name="closed" value="true" />
+      <created>1726668018405</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726668018405</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Begin abstraction of mobs from behaviour">
+      <option name="closed" value="true" />
+      <created>1726674333841</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726674333841</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Made functional for all pathfinder mobs">
+      <option name="closed" value="true" />
+      <created>1726676361485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726676361485</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Introduce custom drops">
+      <option name="closed" value="true" />
+      <created>1726682986135</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726682986135</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Use byte-buddy to override tick">
+      <option name="closed" value="true" />
+      <created>1726749742939</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726749742939</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Incorporate basic particle goal">
+      <option name="closed" value="true" />
+      <created>1726928552950</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726928552950</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Incorporate all SereneAbilities infrastructure and further abstract AI">
+      <option name="closed" value="true" />
+      <created>1727019984778</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727019984778</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Use reflection to dynamically create fake abilities">
+      <option name="closed" value="true" />
+      <created>1727603935046</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727603935046</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Made better usage of archetype visuals">
+      <option name="closed" value="true" />
+      <created>1727621601383</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727621601383</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Make source required abilities functional">
+      <option name="closed" value="true" />
+      <created>1727628488114</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727628488114</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Improvements to visuals">
+      <option name="closed" value="true" />
+      <created>1727787860280</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727787860280</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initialise project" />
+    <MESSAGE value="Begin abstraction of mobs from behaviour" />
+    <MESSAGE value="Made functional for all pathfinder mobs" />
+    <MESSAGE value="Introduce custom drops" />
+    <MESSAGE value="Use byte-buddy to override tick" />
+    <MESSAGE value="Incorporate basic particle goal" />
+    <MESSAGE value="Incorporate all SereneAbilities infrastructure and further abstract AI" />
+    <MESSAGE value="Use reflection to dynamically create fake abilities" />
+    <MESSAGE value="Made better usage of archetype visuals" />
+    <MESSAGE value="Make source required abilities functional" />
+    <MESSAGE value="Improvements to visuals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improvements to visuals" />
+  </component>
+</project>
