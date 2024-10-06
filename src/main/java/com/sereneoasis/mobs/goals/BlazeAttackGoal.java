@@ -82,30 +82,9 @@ public class BlazeAttackGoal extends Goal {
 //                double zDifference = livingEntity.getZ() - this.blaze.getZ();
 //
                 if (this.attackTime <= 0) {
-                    ++this.attackStep;
-                    if (this.attackStep == 1) {
-                        this.attackTime = 60;
-                    } else if (this.attackStep <= 4) {
-                        this.attackTime = 6;
-                    } else {
-                        this.attackTime = 100;
-                        this.attackStep = 0;
-                    }
-
-                    if (this.attackStep > 1) {
-//                        new SkyBlade(blaze.getBukkitLivingEntity());
-
-//                        CoreAbility.getAbilities(blaze.getBukkitEntity() ).forEach(ability -> ability.remove());
-
-
-
-                        AbilityFactory abilityFactory = new AbilityFactory(blaze.getBukkitEntity());
-
-                        this.attackStep = 0;
-                        this.attackTime = 100;
-                    }
+                    AbilityFactory abilityFactory = new AbilityFactory(blaze.getBukkitEntity());
+                    this.attackTime = 20;
                 }
-
 
                 this.blaze.getLookControl().setLookAt(livingEntity, 10.0F, 10.0F);
             } else if (this.lastSeen < 5) {

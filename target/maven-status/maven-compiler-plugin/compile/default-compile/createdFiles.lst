@@ -1,6 +1,5 @@
 com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.class
 com/sereneoasis/ability/Archetype.class
-com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockShapeFromLoc.class
 com/sereneoasis/ability/utilities/blocks/forcetype/preparation/BlockRingAroundPoint.class
 com/sereneoasis/ability/utilities/particles/DirectionalStream.class
 com/sereneoasis/ability/data/AbilityData.class
@@ -22,7 +21,6 @@ com/sereneoasis/ability/utilities/particles/SphereBlast.class
 com/sereneoasis/ability/utilities/particles/Blade.class
 com/sereneoasis/ability/visuals/EarthVisual.class
 com/sereneoasis/ability/utilities/blocks/forcetype/preparation/BlockRingAroundPlayer.class
-com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLoc.class
 com/sereneoasis/ability/utilities/particles/Arc$OutputLocation.class
 com/sereneoasis/ability/utilities/blocks/forcetype/effect/BlockExplodeSphere.class
 com/sereneoasis/ability/utilities/velocity/Jump.class
@@ -66,6 +64,7 @@ com/sereneoasis/ability/utilities/blocks/forcetype/sourcing/SourceBlockToLoc.cla
 com/sereneoasis/util/enhancedmethods/EnhancedTempBlocks.class
 com/sereneoasis/ability/utilities/blocks/forcetype/sourcing/SourceBlockToPlayerGivenType.class
 com/sereneoasis/util/enhancedmethods/EnhancedDisplayBlocks.class
+com/sereneoasis/util/Collections.class
 com/sereneoasis/util/Constants.class
 com/sereneoasis/util/enhancedmethods/EnhancedBlocksArchetypeLess.class
 com/sereneoasis/SereneMobs.class

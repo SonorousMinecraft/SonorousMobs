@@ -2,10 +2,7 @@ package com.sereneoasis.ability.utilities.blocks.forcetype.projectile;
 
 import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.ability.abilities.DisplayBlock;
-import com.sereneoasis.util.AbilityStatus;
-import com.sereneoasis.util.DamageHandler;
-import com.sereneoasis.util.Entities;
-import com.sereneoasis.util.Locations;
+import com.sereneoasis.util.*;
 import com.sereneoasis.ability.temp.TempDisplayBlock;import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -22,7 +19,6 @@ public class ShootBlocksFromLocGivenType extends CoreAbility {
     private Location loc;
     private String user;
 
-    private DisplayBlock type;
 
     private boolean directable, autoRemove;
 
@@ -35,13 +31,12 @@ public class ShootBlocksFromLocGivenType extends CoreAbility {
 
     private long timeBetweenCurves = 50, lastCurveTime = System.currentTimeMillis();
 
-    public ShootBlocksFromLocGivenType(Entity entity, String user, Location startLoc, DisplayBlock type, boolean directable, boolean autoRemove) {
+    public ShootBlocksFromLocGivenType(Entity entity, String user) {
         super(entity, user);
         this.user = user;
-        this.type = type;
-        this.loc = startLoc.clone().subtract(entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().normalize());
-        this.directable = directable;
-        this.autoRemove = autoRemove;
+        this.loc = entity.getLocation().add(0,entity.getHeight()-0.5, 0).clone();;
+        this.directable = false;
+        this.autoRemove = true;
         this.dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().normalize();
         this.abilityStatus = AbilityStatus.SHOT;
         start();
@@ -79,9 +74,9 @@ public class ShootBlocksFromLocGivenType extends CoreAbility {
 
         for (Location point : locs) {
             if (directable) {
-                new TempDisplayBlock(point, type, 2000, size);
+                new TempDisplayBlock(point, Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), 2000, size);
             } else {
-                new TempDisplayBlock(point, type, revertTime, size);
+                new TempDisplayBlock(point, Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), revertTime, size);
             }
 
         }

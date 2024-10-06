@@ -11,6 +11,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
 import java.util.*;
+import java.util.Collections;
 
 public class RaiseBlockPillar extends CoreAbility {
 

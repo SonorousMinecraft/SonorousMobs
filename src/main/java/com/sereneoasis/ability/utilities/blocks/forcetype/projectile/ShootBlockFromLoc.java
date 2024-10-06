@@ -4,7 +4,9 @@ import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.util.AbilityStatus;
 import com.sereneoasis.util.AbilityDamage;
 import com.sereneoasis.util.Blocks;
-import com.sereneoasis.ability.temp.TempDisplayBlock;import org.bukkit.Color;
+import com.sereneoasis.ability.temp.TempDisplayBlock;
+import com.sereneoasis.util.Collections;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -23,44 +25,16 @@ public class ShootBlockFromLoc extends CoreAbility {
     private Vector dir;
     private TempDisplayBlock block;
 
-    public ShootBlockFromLoc(Entity entity, String user, Location startLoc, Material type, boolean directable, boolean autoRemove) {
+    public ShootBlockFromLoc(Entity entity, String user) {
         super(entity, user);
         this.user = user;
-        this.loc = startLoc;
-        this.directable = directable;
-        this.autoRemove = autoRemove;
-        this.dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().normalize();
-        this.abilityStatus = AbilityStatus.SHOT;
-
-        block = new TempDisplayBlock(loc, type, 60000, size);
-        abilityStatus = AbilityStatus.SHOT;
-        start();
-    }
-
-    public ShootBlockFromLoc(Entity entity, String user, Location startLoc, Material type, boolean directable, boolean autoRemove, double size) {
-        super(entity, user);
-        this.user = user;
-        this.loc = startLoc;
-        this.directable = directable;
-        this.autoRemove = autoRemove;
-        this.dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().normalize();
-        this.abilityStatus = AbilityStatus.SHOT;
-
-        block = new TempDisplayBlock(loc, type, 60000, size);
-        abilityStatus = AbilityStatus.SHOT;
-        start();
-    }
-
-    public ShootBlockFromLoc(Entity entity, String user, Location startLoc, Material type, boolean autoRemove, Vector dir) {
-        super(entity, user);
-        this.user = user;
-        this.loc = startLoc;
+        this.loc = entity.getLocation().add(0,entity.getHeight()-0.5, 0).clone();;
         this.directable = false;
-        this.autoRemove = autoRemove;
-        this.dir = dir.clone();
+        this.autoRemove = true;
+        this.dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().normalize();
         this.abilityStatus = AbilityStatus.SHOT;
 
-        block = new TempDisplayBlock(loc, type, 60000, size);
+        block = new TempDisplayBlock(loc, Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), 60000, size);
         abilityStatus = AbilityStatus.SHOT;
         start();
     }

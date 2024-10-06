@@ -1,10 +1,9 @@
 package com.sereneoasis.ability.utilities.blocks.forcetype.projectile;
 
 import com.sereneoasis.ability.CoreAbility;
-import com.sereneoasis.ability.abilities.DisplayBlock;
-import com.sereneoasis.ability.temp.TempDisplayBlock;
+import com.sereneoasis.ability.data.ArchetypeDataManager;
 import com.sereneoasis.util.*;
-import org.bukkit.Color;
+import com.sereneoasis.ability.temp.TempDisplayBlock;import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
@@ -17,7 +16,6 @@ import java.util.Set;
 public class BlockSweepGivenType extends CoreAbility {
 
 
-    protected TempDisplayBlock glowingSource;
     private Location origin, loc1, loc2;
     private Vector dir1, dir2, dir;
     private Set<Location> oldLocs = new HashSet<>();
@@ -26,24 +24,22 @@ public class BlockSweepGivenType extends CoreAbility {
 
     private Set<TempDisplayBlock> tempDisplayBlocks = new HashSet<>();
 
-    private DisplayBlock displayBlock;
 
-
-    public BlockSweepGivenType(Entity entity, String name, Color color, DisplayBlock displayBlock) {
+    public BlockSweepGivenType(Entity entity, String name) {
         super(entity, name);
 
 
-        this.displayBlock = displayBlock;
+
         abilityStatus = AbilityStatus.NO_SOURCE;
-        Block source = Blocks.getFacingBlockOrLiquid(entity, sourceRange);
-        if (source != null && Blocks.getArchetypeBlocks(sEntity).contains(source.getType())) {
-            this.origin = Blocks.getFacingBlockOrLiquidLoc(entity, sourceRange).subtract(0, size, 0);
 
-            glowingSource = Blocks.selectSourceAnimationManual(origin, color, size);
+        this.origin = entity.getLocation().add(0,entity.getHeight()-0.5, 0).clone();
 
-            abilityStatus = AbilityStatus.SOURCE_SELECTED;
-            start();
-        }
+
+        abilityStatus = AbilityStatus.SOURCE_SELECTED;
+
+        start();
+        setHasClicked();
+
 
     }
 
@@ -54,11 +50,9 @@ public class BlockSweepGivenType extends CoreAbility {
 
             Set<Location> newLocs = new HashSet<>(oldLocs);
             oldLocs.forEach(location -> {
-                Location newLoc = Locations.getNextLocLiquid(location, dir, speed);
-                if (newLoc != null && Blocks.getArchetypeBlocks(sEntity).contains(newLoc.getBlock().getType())) {
+                Location newLoc = location.clone().add(dir.clone().multiply(speed));
+                newLocs.add(newLoc);
 
-                    newLocs.add(newLoc);
-                }
             });
 
             loc1.add(dir.clone().multiply(speed).add(dir1));
@@ -70,7 +64,7 @@ public class BlockSweepGivenType extends CoreAbility {
                     .filter(location -> !oldLocs.contains(location))
                     .map(Location::getBlock)
                     .forEach(block -> {
-                        TempDisplayBlock tdb = new TempDisplayBlock(block, displayBlock, 1000, 1);
+                        TempDisplayBlock tdb = new TempDisplayBlock(block, Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), 1000, 1);
 //                            tdb.getBlockDisplay().setGlowing(true);
                         tempDisplayBlocks.add(tdb);
 //                            tdb.moveToAndMaintainFacing(tdb.getLoc().add(0, 10, 0));
@@ -78,6 +72,8 @@ public class BlockSweepGivenType extends CoreAbility {
 
 //                        DamageHandler.damageEntity(Entities.getAffected(tdb.getLoc(), hitbox, entity), entity, this, damage);
                     });
+
+            tempDisplayBlocks.stream().forEach(tempDisplayBlock -> tempDisplayBlock.moveToAndMaintainFacing(tempDisplayBlock.getLoc().add(0, Math.random() * Constants.BLOCK_RAISE_SPEED * speed, 0)));
 
 
             oldLocs = newLocs;
@@ -94,6 +90,8 @@ public class BlockSweepGivenType extends CoreAbility {
 
             if (origin.distance(Locations.getMidpoint(loc1, loc2)) > range) {
                 abilityStatus = AbilityStatus.COMPLETE;
+                this.remove();
+
             }
         }
     }
@@ -117,8 +115,7 @@ public class BlockSweepGivenType extends CoreAbility {
 
             this.dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().setY(0).normalize();
 
-            oldLocs.add(origin.clone().add(0, size, 0));
-            glowingSource.revert();
+            oldLocs.add(origin.clone());
         }
     }
 

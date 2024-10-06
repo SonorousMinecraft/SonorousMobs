@@ -66,7 +66,11 @@ public class TempDisplayBlock {
         this.blockDisplay = (BlockDisplay) loc.getWorld().spawn(loc, EntityType.BLOCK_DISPLAY.getEntityClass(), (entity) ->
         {
             BlockDisplay bDisplay = (BlockDisplay) entity;
-            bDisplay.setBlock(block.createBlockData());
+            if (block == Material.WATER){
+                bDisplay.setBlock(Material.BLUE_STAINED_GLASS.createBlockData());
+            } else {
+                bDisplay.setBlock(block.createBlockData());
+            }
             Transformation transformation = bDisplay.getTransformation();
             transformation.getTranslation().set(-size / 2, -size / 2, -size / 2);
             //transformation.getTranslation().set(new Vector3d(-Math.cos(Math.toRadians(yaw))*size -size/2, -size/2,-Math.sin(Math.toRadians(yaw)*size) - size/2));
@@ -87,7 +91,11 @@ public class TempDisplayBlock {
         this.blockDisplay = (BlockDisplay) loc.getWorld().spawn(loc, EntityType.BLOCK_DISPLAY.getEntityClass(), (entity) ->
         {
             BlockDisplay bDisplay = (BlockDisplay) entity;
-            bDisplay.setBlock(type.createBlockData());
+            if (type == Material.WATER){
+                bDisplay.setBlock(Material.BLUE_STAINED_GLASS.createBlockData());
+            } else {
+                bDisplay.setBlock(type.createBlockData());
+            }
             Transformation transformation = bDisplay.getTransformation();
             transformation.getTranslation().set(-size / 2, -size / 2, -size / 2);
             //transformation.getTranslation().set(new Vector3d(-Math.cos(Math.toRadians(yaw))*size -size/2, -size/2,-Math.sin(Math.toRadians(yaw)*size) - size/2));

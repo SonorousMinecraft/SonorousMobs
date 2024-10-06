@@ -2,10 +2,7 @@ package com.sereneoasis.ability.utilities.blocks.forcetype.projectile;
 
 import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.ability.abilities.DisplayBlock;
-import com.sereneoasis.util.AbilityStatus;
-import com.sereneoasis.util.AbilityDamage;
-import com.sereneoasis.util.Entities;
-import com.sereneoasis.util.Locations;
+import com.sereneoasis.util.*;
 import com.sereneoasis.ability.temp.TempDisplayBlock;import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -29,16 +26,15 @@ public class BlockSphereBlast extends CoreAbility {
     private HashMap<Integer, TempDisplayBlock> spike = new HashMap<>();
 
 
-    public BlockSphereBlast(Entity entity, String name, Location startLoc, boolean gravity) {
+    public BlockSphereBlast(Entity entity, String name) {
         super(entity, name);
 
         
-        this.gravity = gravity;
+        this.gravity = false;
 
         this.origin = entity.getLocation().add(0,entity.getHeight()-0.5, 0).clone();
-        this.loc = startLoc.clone();
-        spike = Entities.handleDisplayBlockEntities(spike, Locations.getOutsideSphereLocs(loc, radius, size),
-                DisplayBlock.SUN, size);
+        this.loc = origin.clone();
+        spike = Entities.handleDisplayBlockEntities(spike, Locations.getOutsideSphereLocs(loc, radius, 0.2), Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), size);
         this.abilityStatus = AbilityStatus.CHARGED;
         start();
     }
@@ -49,10 +45,17 @@ public class BlockSphereBlast extends CoreAbility {
 
         if (abilityStatus == AbilityStatus.CHARGED) {
             dir = entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection().clone();
+            abilityStatus = AbilityStatus.SHOT;
         }
         if (abilityStatus == AbilityStatus.SHOT) {
+
+            spike = Entities.handleDisplayBlockEntities(spike, Locations.getOutsideSphereLocs(loc, radius, 0.2),
+                    Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), size);
+
             if (loc.distance(origin) > range || !loc.getBlock().isPassable()) {
                 this.abilityStatus = AbilityStatus.COMPLETE;
+                remove();
+
             }
 
             if (gravity) {
@@ -61,13 +64,13 @@ public class BlockSphereBlast extends CoreAbility {
 
             loc.add(dir.clone().multiply(speed));
 
-            spike = Entities.handleDisplayBlockEntities(spike, Locations.getOutsideSphereLocs(loc, radius, size),
-                    DisplayBlock.SUN, size);
+
 
             boolean isFinished = AbilityDamage.damageSeveral(loc, this, entity, true, entity.getLocation().add(0,entity.getHeight()-0.5, 0).getDirection());
 
             if (isFinished) {
                 this.abilityStatus = AbilityStatus.COMPLETE;
+                remove();
             }
         }
     }
@@ -77,7 +80,7 @@ public class BlockSphereBlast extends CoreAbility {
 //            Vector dir = Vectors.getDirectionBetweenLocations(loc, targetLoc).normalize();
 //            loc.add(dir.clone().multiply(speed));
             loc = targetLoc.clone();
-            spike = Entities.handleDisplayBlockEntities(spike, Locations.getOutsideSphereLocs(targetLoc, radius, size), DisplayBlock.SUN, size);
+            spike = Entities.handleDisplayBlockEntities(spike, Locations.getOutsideSphereLocs(targetLoc, radius, size), Collections.getRandom(Blocks.getArchetypeBlocks(sEntity)), size);
         }
     }
 

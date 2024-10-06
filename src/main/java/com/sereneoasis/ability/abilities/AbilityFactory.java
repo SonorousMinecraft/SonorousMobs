@@ -18,7 +18,9 @@ import java.util.logging.Level;
 
 public class AbilityFactory {
 
-    Set<Class<?>> classes = ReflectionUtils.findAllClasses("com.sereneoasis.ability.utilities.blocks.requirestype.projectiles");
+//    Set<Class<?>> classes = ReflectionUtils.findAllClasses("com.sereneoasis.ability.utilities.blocks.requirestype.projectiles");
+
+
 
     public AbilityFactory(Entity entity){
         SereneEntity sereneEntity = SereneEntity.getSereneAbilitiesEntity(entity);
@@ -27,6 +29,8 @@ public class AbilityFactory {
 
         Random r = new Random();
 
+        Set<Class<?>> classes = ReflectionUtils.findAllClasses("com.sereneoasis.ability.utilities.blocks.forcetype.projectile");
+        classes.addAll(ReflectionUtils.findAllClasses("com.sereneoasis.ability.utilities.blocks.requirestype.projectiles"));
         classes.stream().skip(r.nextInt(classes.size())).findFirst().ifPresent(aClass -> {
 
             try {
