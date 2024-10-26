@@ -109,6 +109,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <groupId>com.sereneoasis</groupId>
+                    <artifactId>SereneMobs</artifactId>
+                    <version>1.0</version>
+                    <packaging>jar</packaging>
+                    <file>${basedir}/target/SereneMobs-1.0-SNAPSHOT.jar</file>
+                    <generatePom>true</generatePom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install-jar-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

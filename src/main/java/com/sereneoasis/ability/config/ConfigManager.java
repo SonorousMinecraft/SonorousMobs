@@ -106,6 +106,7 @@ public class ConfigManager {
         earthTags.add(Tag.BASE_STONE_NETHER);
         Set<Material> earthBlocks = new HashSet<>();
         earthBlocks.add(Material.GRASS_BLOCK);
+        earthBlocks.add(Material.STONE);
         earthBlocks.add(Material.GRAVEL);
 
         saveArchetypeBlocks(earth, Archetype.EARTH, earthTags, earthBlocks);
@@ -116,6 +117,14 @@ public class ConfigManager {
 
 
         FileConfiguration chaos = getConfig(Archetype.CHAOS).getConfig();
+
+        Set<Tag<Material>> chaosTags = new HashSet<>();
+        chaosTags.add(Tag.ANCIENT_CITY_REPLACEABLE);
+        Set<Material> chaosBlocks = new HashSet<>();
+        chaosBlocks.add(Material.END_STONE);
+
+        saveArchetypeBlocks(chaos, Archetype.CHAOS, chaosTags, chaosBlocks);
+
         saveArchetypeCosmetics(chaos, Archetype.CHAOS, "#C5B4E3");
         chaos.options().copyDefaults(true);
 
@@ -124,7 +133,12 @@ public class ConfigManager {
         FileConfiguration sun = getConfig(Archetype.SUN).getConfig();
 
 
-        sun.addDefault(Archetype.SUN.toString() + ".blocks", "FIRE");
+        Set<Tag<Material>> sunTags = new HashSet<>();
+        sunTags.add(Tag.INFINIBURN_NETHER);
+        Set<Material> sunBlocks = new HashSet<>();
+        sunBlocks.add(Material.RAW_GOLD_BLOCK);
+
+        saveArchetypeBlocks(chaos, Archetype.SUN, sunTags, sunBlocks);
 
         saveArchetypeCosmetics(sun, Archetype.SUN, "#f9d71c");
         sun.options().copyDefaults(true);
@@ -132,6 +146,13 @@ public class ConfigManager {
 
 
         FileConfiguration sky = getConfig(Archetype.SKY).getConfig();
+
+        Set<Tag<Material>> skyTags = new HashSet<>();
+        Set<Material> skyBlocks = new HashSet<>();
+        skyBlocks.add(Material.WHITE_STAINED_GLASS);
+
+        saveArchetypeBlocks(chaos, Archetype.SKY, skyTags, skyBlocks);
+        
 
         saveArchetypeCosmetics(sky, Archetype.SKY, "#BCC8C6");
         sky.options().copyDefaults(true);
