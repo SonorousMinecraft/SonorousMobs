@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f190fc5f-da06-4b47-b9c8-e89ae48867d8" name="Changes" comment="Improvements to visuals">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/util/Collections.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.paper-nms/classes.json" beforeDir="false" afterPath="$PROJECT_DIR$/.paper-nms/classes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/abilities/AbilityFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/abilities/AbilityFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/temp/TempDisplayBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/temp/TempDisplayBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockShapeFromLoc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLoc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/requirestype/RaiseBlockPillar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/utilities/blocks/requirestype/RaiseBlockPillar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/goals/BlazeAttackGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/goals/BlazeAttackGoal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/abilities/AbilityFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/abilities/AbilityFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSphereBlast.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/BlockSweepGivenType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockFromLoc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlockShapeFromLoc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLoc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/forcetype/projectile/ShootBlocksFromLocGivenType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/goals/BlazeAttackGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/goals/BlazeAttackGoal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/SereneMobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/SereneMobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/ability/config/ConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/command/SerenityCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/command/SerenityCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/SereneMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/SereneMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/goals/BlazeAttackGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sereneoasis/mobs/goals/BendingGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/SereneMobs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/SereneMobs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/config/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/config/ConfigManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/temp/TempDisplayBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/temp/TempDisplayBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/requirestype/RaiseBlockPillar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/ability/utilities/blocks/requirestype/RaiseBlockPillar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/command/SerenityCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/SereneMonster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/SereneMonster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sereneoasis/mobs/goals/BlazeAttackGoal.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-SereneMobs-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-SereneMobs-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
@@ -46,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ability-framework" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,7 +70,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;block-abilities&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ai&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/sujan/IdeaProjects/SereneMobs/src/main/java/com/sereneoasis/util&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -106,6 +101,9 @@
       <workItem from="1726753025026" duration="29544000" />
       <workItem from="1727603664109" duration="19766000" />
       <workItem from="1728142021729" duration="5071000" />
+      <workItem from="1728757108613" duration="715000" />
+      <workItem from="1728759432242" duration="1000" />
+      <workItem from="1729016114498" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="Initialise project">
       <option name="closed" value="true" />

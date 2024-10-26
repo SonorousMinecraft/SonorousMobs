@@ -31,6 +31,27 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>install-jar-lib</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <groupId>com.sereneoasis</groupId>
+          <artifactId>SereneMobs</artifactId>
+          <version>1.0</version>
+          <packaging>jar</packaging>
+          <file>${basedir}/target/SereneMobs-1.0-SNAPSHOT.jar</file>
+          <generatePom>true</generatePom>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <repositories>

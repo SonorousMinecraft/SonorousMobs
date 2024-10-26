@@ -1,7 +1,5 @@
 package com.sereneoasis.mobs.goals;
 
-import com.sereneoasis.SereneMobs;
-import com.sereneoasis.ability.CoreAbility;
 import com.sereneoasis.ability.abilities.AbilityFactory;
 
 import net.minecraft.world.entity.LivingEntity;
@@ -9,22 +7,16 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 
-import net.minecraft.world.entity.projectile.*;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-import org.bukkit.*;
-import org.bukkit.util.Vector;
-
 import java.util.EnumSet;
 
-public class BlazeAttackGoal extends Goal {
+public class BendingGoal extends Goal {
     private final PathfinderMob blaze;
     private int attackStep;
     private int attackTime;
     private int lastSeen;
 
 
-    public BlazeAttackGoal(PathfinderMob blaze) {
+    public BendingGoal(PathfinderMob blaze) {
         this.blaze = blaze;
         this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
     }
@@ -83,7 +75,7 @@ public class BlazeAttackGoal extends Goal {
 //
                 if (this.attackTime <= 0) {
                     AbilityFactory abilityFactory = new AbilityFactory(blaze.getBukkitEntity());
-                    this.attackTime = 20;
+                    this.attackTime = 200;
                 }
 
                 this.blaze.getLookControl().setLookAt(livingEntity, 10.0F, 10.0F);

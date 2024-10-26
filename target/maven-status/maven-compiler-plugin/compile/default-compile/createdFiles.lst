@@ -5,6 +5,7 @@ com/sereneoasis/ability/utilities/particles/DirectionalStream.class
 com/sereneoasis/ability/data/AbilityData.class
 com/sereneoasis/ability/utilities/items/ThrowItemDisplay.class
 com/sereneoasis/util/Display.class
+com/sereneoasis/mobs/goals/BendingGoal.class
 com/sereneoasis/ability/abilities/MasterAbility.class
 com/sereneoasis/util/Scheduler.class
 com/sereneoasis/ability/utilities/blocks/requirestype/BlockCreateSphere.class
@@ -41,13 +42,11 @@ com/sereneoasis/ability/abilities/DisplayBlock.class
 com/sereneoasis/ability/visuals/ChaosVisual.class
 com/sereneoasis/util/Locations$Line.class
 com/sereneoasis/util/Blocks.class
-com/sereneoasis/mobs/goals/BlazeAttackGoal.class
 com/sereneoasis/util/AbilityDamage.class
 com/sereneoasis/ability/CoreAbility.class
 com/sereneoasis/util/Entities.class
 com/sereneoasis/ability/config/ConfigManager.class
 com/sereneoasis/ability/abilities/AbilityFactory.class
-com/sereneoasis/command/SerenityCommand.class
 com/sereneoasis/util/enhancedmethods/EnhancedBlocks.class
 com/sereneoasis/ability/visuals/SkyVisual.class
 com/sereneoasis/mobs/SereneMob.class
